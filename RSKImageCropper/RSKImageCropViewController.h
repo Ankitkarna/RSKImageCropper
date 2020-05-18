@@ -185,11 +185,6 @@ typedef NS_ENUM(NSUInteger, RSKImageCropMode) {
 /// -------------------------------
 
 /**
- The Title Label.
- */
-@property (strong, nonatomic, readonly) UILabel *moveAndScaleLabel;
-
-/**
  The Cancel Button.
  */
 @property (strong, nonatomic, readonly) UIButton *cancelButton;
@@ -225,11 +220,6 @@ typedef NS_ENUM(NSUInteger, RSKImageCropMode) {
 @property (assign, nonatomic) CGFloat portraitSquareMaskRectInnerEdgeInset;
 
 /**
- The vertical space between the top of the 'Move and Scale' label and the top of the crop view in portrait orientation. Default value is `64.0f`.
- */
-@property (assign, nonatomic) CGFloat portraitMoveAndScaleLabelTopAndCropViewTopVerticalSpace;
-
-/**
  The vertical space between the bottom of the crop view and the bottom of the 'Cancel' button in portrait orientation. Default value is `21.0f`.
  */
 @property (assign, nonatomic) CGFloat portraitCropViewBottomAndCancelButtonBottomVerticalSpace;
@@ -258,11 +248,6 @@ typedef NS_ENUM(NSUInteger, RSKImageCropMode) {
  The inset of the square mask rect's area within the crop view's area in landscape orientation. Default value is `45.0f`.
  */
 @property (assign, nonatomic) CGFloat landscapeSquareMaskRectInnerEdgeInset;
-
-/**
- The vertical space between the top of the 'Move and Scale' label and the top of the crop view in landscape orientation. Default value is `12.0f`.
- */
-@property (assign, nonatomic) CGFloat landscapeMoveAndScaleLabelTopAndCropViewTopVerticalSpace;
 
 /**
  The vertical space between the bottom of the crop view and the bottom of the 'Cancel' button in landscape orientation. Default value is `12.0f`.

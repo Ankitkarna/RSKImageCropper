@@ -15,7 +15,7 @@ DEPENDENCIES:
   - Specta (= 1.0.7)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Expecta
     - "Expecta+Snapshots"
     - FBSnapshotTestCase
@@ -31,4 +31,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: b86b013bec210aa1f997028a5c25b96c1125fbd9
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4
