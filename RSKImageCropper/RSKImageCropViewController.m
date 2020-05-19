@@ -231,32 +231,30 @@ static const CGFloat kLayoutImageScrollViewAnimationDuration = 0.25;
         // --------------------
         
         CGFloat constant = self.portraitCancelButtonLeadingAndCropViewLeadingHorizontalSpace;
-        self.cancelButtonLeadingConstraint = [NSLayoutConstraint constraintWithItem:self.cancelButton attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual
-                                                                             toItem:self.view attribute:NSLayoutAttributeLeading multiplier:1.0f
-                                                                           constant:constant];
-        [self.view addConstraint:self.cancelButtonLeadingConstraint];
+        self.cancelButtonLeadingConstraint = [self.cancelButton.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:constant];
         
         constant = self.portraitCropViewBottomAndCancelButtonBottomVerticalSpace;
-        self.cancelButtonBottomConstraint = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual
-                                                                            toItem:self.cancelButton attribute:NSLayoutAttributeBottom multiplier:1.0f
-                                                                          constant:constant];
-        [self.view addConstraint:self.cancelButtonBottomConstraint];
+        NSLayoutYAxisAnchor *bottomAnchor;
+        if (@available(iOS 11, *)) {
+            bottomAnchor = self.view.safeAreaLayoutGuide.bottomAnchor;
+        } else {
+            bottomAnchor = self.view.bottomAnchor;
+        }
+        self.cancelButtonBottomConstraint = [bottomAnchor constraintEqualToAnchor: self.cancelButton.bottomAnchor constant:constant];
+        
         
         // --------------------
         // The button "Choose".
         // --------------------
         
         constant = self.portraitCropViewTrailingAndChooseButtonTrailingHorizontalSpace;
-        self.chooseButtonTrailingConstraint = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual
-                                                                              toItem:self.chooseButton attribute:NSLayoutAttributeTrailing multiplier:1.0f
-                                                                            constant:constant];
-        [self.view addConstraint:self.chooseButtonTrailingConstraint];
+        self.chooseButtonTrailingConstraint = [self.view.trailingAnchor constraintEqualToAnchor:self.chooseButton.trailingAnchor constant:constant];
         
         constant = self.portraitCropViewBottomAndChooseButtonBottomVerticalSpace;
-        self.chooseButtonBottomConstraint = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual
-                                                                            toItem:self.chooseButton attribute:NSLayoutAttributeBottom multiplier:1.0f
-                                                                          constant:constant];
-        [self.view addConstraint:self.chooseButtonBottomConstraint];
+        self.chooseButtonBottomConstraint = [bottomAnchor constraintEqualToAnchor: self.chooseButton.bottomAnchor constant:constant];
+       
+        NSArray<NSLayoutConstraint*> * constraints = @[self.cancelButtonLeadingConstraint, self.cancelButtonBottomConstraint, self.chooseButtonTrailingConstraint, self.chooseButtonBottomConstraint];
+        [NSLayoutConstraint activateConstraints:constraints];
         
         self.didSetupConstraints = YES;
     } else {
